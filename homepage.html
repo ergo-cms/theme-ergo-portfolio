@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+<title>Homepage Demo</title>
+<meta name="viewport" content="width=device-width,maximum-scale=1.0" />
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<link  href="slick/slick.css" rel="stylesheet" type="text/css"/>
+<link  href="slick/slick-theme.css" rel="stylesheet" type="text/css"/>
+<!-- 
+             ____  ____   ___   __         ___  _  _  ____ 
+      O     (  __)(  _ \ / __) /  \  ___  / __)( \/ )/ ___)
+             ) _)  )   /( (_ \(  O )(___)( (__ / \/ \\___ \
+    O   O   (____)(__\_) \___/ \__/       \___)\_)(_/(____/
+    Ergo Portfolio Theme. Copyright (c) ergo-cms.github.io
+-->
+</head>
+<body>
+	<!-- The 'extracss' has been added here -->
+<header id="header" class="home">
+	<style>
+/*
+from: http://css3.bradshawenterprises.com/cfimg/;
+
+For "n" images You must define:
+a=presentation time for one image
+b=duration for cross fading
+Total animation-duration is of course t=(a+b)*n
+
+animation-delay = t/n or = a+b
+
+Percentage for keyframes:
+
+    0%
+    a/t*100%
+    (a+b)/t*100% = 1/n*100%
+    100%-(b/t*100%)
+    100%
+
+ this: a=3000 b=500 n=3
+ ∴ t = 3500*3 = 10500
+ */
+@keyframes header2anim { 
+  0% { opacity:1; }
+  28.57% {
+    opacity:1;
+  }
+  33.33% {
+    opacity:0;
+  }
+  95.24% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+#header.home>.slider>img {
+	animation-duration: 10.5s;
+}
+
+#header.home>.slider>img:nth-of-type(1) {
+  animation-delay: 7s;
+}
+#header.home>.slider>img:nth-of-type(2) {
+  animation-delay: 3.5s;
+}
+#header.home>.slider>img:nth-of-type(3) {
+  animation-delay: 0s;
+}
+
+	</style>
+	<div class="slider">
+		<img src="images/home.jpg">
+		<img src="images/page.jpg">
+		<img src="images/post.jpg">
+	</div>
+	<nav id="nav">
+	<!-- change your menu at _partials/menu.tex -->
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Projects</a></li>
+			<li><a href="#">About</a></li>
+		</ul>
+	</nav>
+</header>
+<section id="projects" class="items">
+	<a href="#post1" class="odd">
+		<div class="title"><h2>Consectetur adipiscing elit</h2>
+			<h3>Fusce at nisl in purus</h3></div>
+		<div class="images"><img src="images/post.jpg"></div>
+	</a>
+	<a href="#post2" class="even">
+		<div class="title"><h2>Quisque a dolor porta</h2>
+			<h3>Posuere dui at, volutpat nibh</h3></div>
+		<div class="images"><img src="images/page.jpg"></div>
+	</a>
+	<a href="#post3" class="odd">
+		<div class="title"><h2>Duis et metus ac libero</h2>
+			<h3>Scelerisque euismod</h3></div>
+		<div class="images"><img src="images/home.jpg"></div>
+	</a>
+	<a href="#post4" class="even">
+		<div class="title"><h2>Phasellus sollicitudin</h2>
+			<h3>Integer eu ex molestie</h3></div>
+		<div class="images"><img src="images/post.jpg"></div>
+	</a>
+	<a href="#post5" class="odd">
+		<div class="title"><h2>Duis tincidunt diam</h2>
+			<h3>Curabitur at lorem pretium</h3></div>
+		<div class="images"><img src="images/page.jpg"></div>
+	</a>
+	<a href="#post6" class="even">
+		<div class="title"><h2>Nam sed nulla et odio pretium</h2>
+			<h3>Aliquam tempus lorem</h3></div>
+		<div class="images"><img src="images/home.jpg"></div>
+	</a>
+</section>
+
+<section class="container">
+	<div id="content">
+		<h2 id="About">About</h2>
+<p>Fusce a lacinia odio, id suscipit ligula. Donec volutpat vel augue eu hendrerit. Suspendisse rhoncus risus sem, suscipit accumsan est mattis quis. Aliquam luctus, quam non pharetra convallis, nunc quam gravida augue, sit amet vulputate tellus nibh sed metus. Nunc at tellus ac erat tempus finibus sit amet a tellus. Sed vel efficitur sem. Ut ullamcorper orci at dolor sollicitudin blandit.</p>
+<p>Sed posuere pretium purus. Quisque tincidunt augue in ipsum feugiat, et gravida odio laoreet. Mauris eu elit molestie, auctor lectus non, auctor eros. Suspendisse auctor molestie ligula, lacinia vehicula nunc. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris dui sem, rutrum id maximus nec, accumsan eget ante. Duis rhoncus, sapien id blandit dignissim, dolor nibh pellentesque ipsum, quis tempus sem mi a leo. Phasellus id arcu iaculis, ultricies dolor a, consectetur dolor. </p>		
+
+	</div>
+</section>
+
+
+<footer id="footer">
+	<div class="container">Ergo Portfolio Theme <a id="rss" href="{{feed_url}}"><i class="flaticon-rss"></i></a></div>
+</footer>
+<script type="text/javascript" src="slick/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="slick/slick.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  //$('.slider').slick({autoplay: true,autoplaySpeed: 3000,speed:1000,fade:true,waitForAnimate:false,pauseOnHover:false,pauseOnFocus:false,pauseOnDotsHover:true,dots:true});
+});
+</script>
+</body>
+</html>

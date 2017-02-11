@@ -1,0 +1,7 @@
+{{> header.inc.html }}
+{{{content}}}
+<ul class="stats">
+	{{#categories}}<li>{{#. @split}}<a href="{{categories_url}}#{{.}}">{{.}}</a> {{/.}}</li>{{/categories}}
+	{{#tags}}<li>{{#. @split}}<a href="{{tags_url}}#{{.}}">{{.}}</a> {{/.}}</li>{{/tags}}
+</ul>
+{{> footer.inc.html}}

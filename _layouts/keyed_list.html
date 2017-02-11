@@ -1,0 +1,29 @@
+{{> header.inc.html }}
+{{^list_hide_content }}
+	{{{content}}}
+	<hr/>
+{{/list_hide_content}}
+<!--cloud--><ul class="cloud">{{#dynamic_list}}
+<li><a href="#{{key}}" data-size="{{value.length}}">{{key}} ({{value.length}})</a></li>
+{{/dynamic_list}}</ul>
+{{#dynamic_list @auto_paginate }}
+<h2 id="{{key}}"><a href="#title">{{key}}</a></h2>{{#value}}
+	<div class="post clear bordered">
+    	{{#image}}<img src="/images/{{image #safe_thumb{w:120} }}" class="thumb">{{/image}}
+   	 <a href="/{{uri}}">
+    	<h3>{{title}}</h3>
+    	<h4>{{^subtitle}}{{metadesc}}{{/subtitle}}{{subtitle}}</h4></a>
+    	<p class="meta">Posted by <a href="{{author_url}}#{{author}}">{{author}}</a> on {{date.formatted}}</p>
+	</div>{{/value}}
+{{/dynamic_list}}
+{{#paginated}}
+	<ul class="pagination">
+		{{#first}}<li><a href="/{{uri}}">&laquo;</a></li>{{else}}<li class="disabled"><a href="#">&laquo;</a></li>{{/first}}
+		{{#prev}}<li><a href="/{{uri}}">&lsaquo;</a></li>{{else}}{{#paginate_nextprev}}<li class="disabled"><a href="#">&lsaquo;</a></li>{{/paginate_nextprev}}{{/prev}}
+		{{#item}}
+		<li {{#active}}class="active"{{/active}}><a href="/{{uri}}">{{page}}</a></li>{{/item}}
+		{{#next}}<li><a href="/{{uri}}">&rsaquo;</a></li>{{else}}{{#paginate_nextprev}}<li class="disabled"><a href="#">&rsaquo;</a></li>{{/paginate_nextprev}}{{/next}}
+		{{#last}}<li><a href="/{{uri}}">&raquo;</a></li>{{else}}<li class="disabled"><a href="#">&raquo;</a></li>{{/last}}
+	</ul>
+{{/paginated}}
+{{> footer.inc.html}}

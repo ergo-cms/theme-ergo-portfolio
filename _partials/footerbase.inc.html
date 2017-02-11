@@ -1,0 +1,16 @@
+
+<footer id="footer">
+	<div class="container">{{>footer_text }}  <a id="rss" href="{{feed_url}}"><i class="flaticon-rss"></i></a></div>
+</footer>
+{{#has_slider}}
+<script type="text/javascript" src="/slick/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="/slick/slick.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('.slider').slick({autoplay: true,autoplaySpeed: 5000,speed:1000,waitForAnimate:false,pauseOnHover:false,pauseOnFocus:false,pauseOnDotsHover:true,dots:true});
+});
+</script>
+{{/has_slider}}
+{{#scripts}}<script src="{{.}}"></script>{{/scripts}}
+</body>
+</html>

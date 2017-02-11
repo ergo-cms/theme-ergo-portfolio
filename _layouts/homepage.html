@@ -1,0 +1,58 @@
+{{> headerbase.inc.html {extracss:"home"} }}
+<style>
+{{#images @split @slider_style_block{css_selector:'#header.home>.slider>img'} }}
+{{{.}}}
+{{/images}}
+</style>
+<header id="header">
+	<div class="slider">
+		{{#images @split @reverse}}<img src="/images/{{.}}">
+		{{/images}}
+	</div>
+	<nav id="nav">
+		<h1 id="title">{{site_title}}</h1>
+		{{>menu}}
+	</nav>
+</header>
+<section id="work">
+	{{#featured}}
+	<a href="/{{uri}}">
+		<div class="title"><h2>{{title}}</h2>
+			<p>{{subtitle}}</p></div>
+		<div class="images">
+    		{{#image}}<img src="/images/{{image #safe_thumb{w:320} }}" class="thumb" srcset="{{image #safe_srcset{w:'320,512,800'} }}" sizes="(max-width:768px) 100vw, 50vw">{{/image}}
+		</div>
+	</a>
+	{{/featured}}
+</section>
+
+
+{{#NOT_YET}}
+{{^hide_popular_posts}}
+<h2>Popular</h2>
+{{#popular}}
+	<div class="post clear bordered">
+    	{{#image}}<img src="/images/{{image #safe_thumb{w:120} }}" class="thumb">{{/image}}
+   	 <a href="/{{uri}}">
+    	<h3>{{title}}</h3>
+    	<h4>{{^subtitle}}{{metadesc}}{{/subtitle}}{{subtitle}}</h4></a>
+    	<p class="meta">Posted by <a href="{{author_url}}#{{author}}">{{author}}</a> on {{date.formatted}}</p>
+	</div>
+{{/popular}}{{/hide_popular_posts}}
+{{/NOT_YET}}
+<section id="content">
+	<div class="container">
+		<h2 id="About">About</h2>
+		{{{content}}}
+		<div class="social">
+			<a id="rss" href="{{feed_url}}"><i class="flaticon-rss"></i></a> 
+			{{#social.twitter}}<a href="https://twitter.com/{{{social.twitter}}}"><i class="flaticon-twitter"></i></a>{{/social.twitter}}
+			{{#social.linkedin}}<a href="https://linkedin.com/{{{social.linkedin}}}"><i class="flaticon-linkedin"></i></a>{{/social.linkedin}}
+			{{#social.facebook}}<a href="https://facebook.com/{{{social.facebook}}}"><i class="flaticon-fb"></i></a>{{/social.facebook}}
+			{{#social.instagram}}<a href="https://instagram.com/{{{social.instagram}}}"><i class="flaticon-instagram"></i></a>{{/social.instagram}}
+			{{#social.pinterest}}<a href="https://pinterest.com/{{{social.pinterest}}}"><i class="flaticon-pinterest"></i></a>{{/social.pinterest}}
+			{{#social.github}}<a href="https://github.com/{{{social.github}}}"><i class="flaticon-github"></i></a>{{/social.github}}
+		</div>
+	</div>
+</section>
+{{> footerbase.inc.html }}

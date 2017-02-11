@@ -1,0 +1,15 @@
+{{>headerbase.inc.html}}
+<header id="header"{{^has_slider}} style="background-image:url(/images/{{image #safe_thumb{w:640} }} )"{{/has_slider}}>
+	<nav id="nav">
+		<h1 id="title"><a href="/{{uri}}">{{longtitle || title}}</a></h1>
+		{{>menu}}
+	</nav>
+</header>
+{{#has_slider}}<section id="images">
+	<div class="slider container"> 
+	{{#images @split}}<div class="slide"><img src="/images/{{. #safe_thumb{w:640} }}"></div>{{/images}}
+	</div>
+</section>
+{{/has_slider}}
+<section id="content">
+<div class="container">

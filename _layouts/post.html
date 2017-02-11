@@ -1,0 +1,48 @@
+{{> header.inc.html {has_slider:true} }}
+<div class="post">
+	{{{content}}}
+	<div class="clear"></div>
+	<ul class="stats">
+		{{#categories}}<li>{{#. @split}}<a href="{{categories_url}}#{{.}}">{{.}}</a> {{/.}}</li>{{/categories}}
+		{{#tags}}<li>{{#. @split}}<a href="{{tags_url}}#{{.}}">{{.}}</a> {{/.}}</li>{{/tags}}
+	</ul>
+	<div class="social">Follow me on:&nbsp;&nbsp;&nbsp;
+		<a id="rss" href="{{feed_url}}"><i class="flaticon-rss"></i></a> 
+		{{#social.twitter}}<a href="https://twitter.com/{{{social.twitter}}}"><i class="flaticon-twitter"></i></a>{{/social.twitter}}
+		{{#social.linkedin}}<a href="https://linkedin.com/{{{social.linkedin}}}"><i class="flaticon-linkedin"></i></a>{{/social.linkedin}}
+		{{#social.facebook}}<a href="https://facebook.com/{{{social.facebook}}}"><i class="flaticon-fb"></i></a>{{/social.facebook}}
+		{{#social.instagram}}<a href="https://instagram.com/{{{social.instagram}}}"><i class="flaticon-instagram"></i></a>{{/social.instagram}}
+		{{#social.pinterest}}<a href="https://pinterest.com/{{{social.pinterest}}}"><i class="flaticon-pinterest"></i></a>{{/social.pinterest}}
+		{{#social.github}}<a href="https://github.com/{{{social.github}}}"><i class="flaticon-github"></i></a>{{/social.github}}
+	</div>
+</div>
+{{#has_nextprev}}<!--nextprev plugin-->
+<div style="text-align:right;margin-bottom:2em">
+{{#prev}}
+	<a href="/{{uri}}" class="button">&lt;&lt; Previous</a>
+{{/prev}}
+{{#next}}
+	<a href="/{{uri}}" class="button">Next &gt;&gt;</a>
+{{/next}}
+</div>
+{{/has_nextprev}}
+{{#social.disqus}}
+<div id="disqus_thread"><a href="#" onclick="return disqus();" id="show_comments" class="button">Show Comments</a> </div>
+<script type="text/javascript">
+	var disqus_loaded = false;
+	var disqus_shortname = '{{{social.disqus}}}';
+	var disqus_identifier = '{{{uri}}}';
+	var disqus_url = '{{site_url}}{{uri}}';
+	function disqus() {
+		if (disqus_loaded) 
+			return false;
+		disqus_loaded = true;
+		{{if  social.disqus == 'username' }}alert("You need to change the disqus username in config.ergo.js for this to work correctly. This message will be removed when completed"){{endif}}
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		return false;
+	}
+</script>
+{{/social.disqus}}
+{{> footer.inc.html {has_slider:true} }}
