@@ -2,12 +2,20 @@
 <footer id="footer">
 	<div class="container">{{>footer_text }}  <a id="rss" href="{{feed_url}}"><i class="flaticon-rss"></i></a></div>
 </footer>
+<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="/js/ofi.min.js"></script>
 {{#has_slider}}
-<script type="text/javascript" src="/slick/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="/slick/slick.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
+$(function(){
+  objectFitImages();
   $('.slider').slick({autoplay: true,autoplaySpeed: 5000,speed:1000,waitForAnimate:false,pauseOnHover:false,pauseOnFocus:false,pauseOnDotsHover:true,dots:true});
+});
+</script>
+{{else}}
+<script type="text/javascript">
+$(function(){
+  objectFitImages();
 });
 </script>
 {{/has_slider}}

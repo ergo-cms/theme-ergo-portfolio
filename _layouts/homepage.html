@@ -1,6 +1,6 @@
 {{> headerbase.inc.html {extracss:"home"} }}
 <style>
-{{#images @split @slider_style_block{css_selector:'#header.home>.slider>img'} }}
+{{#images @split @slider_style_block{css_selector:'.home #header>.slider>img'} }}
 {{{.}}}
 {{/images}}
 </style>
@@ -11,6 +11,7 @@
 	</div>
 	<nav id="nav">
 		<h1 id="title">{{site_title}}</h1>
+		{{#subtitle}}<p>{{subtitle}}</p>{{/subtitle}}
 		{{>menu}}
 	</nav>
 </header>

@@ -5,7 +5,7 @@ This is the erg-simple theme config for ergo cms. See online for more options
 module.exports = {
 	name: "Ergo Portfolio Theme",
 	url: "https://github.com/ergo-cms/theme-ergo-portfolio",
-	asset_paths: ['styles.css','favicon.ico','images','flaticon', 'slick'],
+	asset_paths: ['styles.css','favicon.ico','js','images','flaticon', 'slick'],
 	default_fields: {
 		author_url: '/#content',
 		tags_url: '/tags.html',

@@ -1,21 +1,38 @@
-{{> header.inc.html }}
+{{> headerbase.inc.html }}
+<header id="header" style="background-image:url(/images/{{image #safe_thumb{w:640} }} )">
+	<nav id="nav">
+		<h1 id="title"><a href="/{{uri}}">{{longtitle || title}}</a></h1>
+		{{>menu}}
+	</nav>
+</header>
 {{^list_hide_content }}
+<section id="content">
+	<div class="container">
 	{{{content}}}
-	<hr/>
+	</div>
+</section>
 {{/list_hide_content}}
+<div class="container">
 <!--cloud--><ul class="cloud">{{#dynamic_list}}
 <li><a href="#{{key}}" data-size="{{value.length}}">{{key}} ({{value.length}})</a></li>
-{{/dynamic_list}}</ul>
+{{/dynamic_list}}</ul></div>
+	<div class="container">
 {{#dynamic_list @auto_paginate }}
-<h2 id="{{key}}"><a href="#title">{{key}}</a></h2>{{#value}}
-	<div class="post clear bordered">
-    	{{#image}}<img src="/images/{{image #safe_thumb{w:120} }}" class="thumb">{{/image}}
-   	 <a href="/{{uri}}">
-    	<h3>{{title}}</h3>
-    	<h4>{{^subtitle}}{{metadesc}}{{/subtitle}}{{subtitle}}</h4></a>
-    	<p class="meta">Posted by <a href="{{author_url}}#{{author}}">{{author}}</a> on {{date.formatted}}</p>
-	</div>{{/value}}
+<h2 id="{{key}}" class="section"><a href="#title">{{key}}</a></h2>
+<section id="work">{{#value}}
+	<a href="/{{uri}}">
+		<div class="title"><h2>{{title}}</h2>
+			<p>{{subtitle}}</p>
+	    	
+		</div>
+		<div class="images">
+    		{{#image}}<img src="/images/{{image #safe_thumb{w:320} }}" class="thumb" srcset="{{image #safe_srcset{w:'320,512,800'} }}" sizes="(max-width:768px) 100vw, 50vw">{{/image}}
+		</div>
+	</a>
+{{/value}}</section>
 {{/dynamic_list}}
+</div>
+	<div class="container">
 {{#paginated}}
 	<ul class="pagination">
 		{{#first}}<li><a href="/{{uri}}">&laquo;</a></li>{{else}}<li class="disabled"><a href="#">&laquo;</a></li>{{/first}}
@@ -26,4 +43,5 @@
 		{{#last}}<li><a href="/{{uri}}">&raquo;</a></li>{{else}}<li class="disabled"><a href="#">&raquo;</a></li>{{/last}}
 	</ul>
 {{/paginated}}
-{{> footer.inc.html}}
+</div>
+{{> footerbase.inc.html}}

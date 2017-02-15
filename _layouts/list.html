@@ -1,20 +1,34 @@
-{{> header.inc.html }}
+{{> headerbase.inc.html }}
+<header id="header" style="background-image:url(/images/{{image #safe_thumb{w:640} }} )">
+	<nav id="nav">
+		<h1 id="title"><a href="/{{uri}}">{{longtitle || title}}</a></h1>
+		{{>menu}}
+	</nav>
+</header>
 {{^list_hide_content }}
+<section id="content">
+	<div class="container">
 	{{{content}}}
-	<hr/>
-{{/list_hide_content}}
-{{#dynamic_list @auto_paginate }}
-	<div class="post clear bordered">
-    	{{#image}}<img src="/images/{{image #safe_thumb{w:120} }}" class="thumb">{{/image}}
-   	 <a href="/{{uri}}">
-    	<h3>{{title}}</h3>
-    	<h4>{{^subtitle}}{{metadesc}}{{/subtitle}}{{subtitle}}</h4></a>
-    	<p class="meta">Posted by <a href="{{author_url}}#{{author}}">{{author}}</a> on {{date.formatted}}</p>
 	</div>
+</section>
+{{/list_hide_content}}
+<div class="container"><section id="work">
+{{#dynamic_list @auto_paginate }}
+	<a href="/{{uri}}">
+		<div class="title"><h2>{{title}}</h2>
+			<p>{{subtitle}}</p>
+	    	
+		</div>
+		<div class="images">
+    		{{#image}}<img src="/images/{{image #safe_thumb{w:320} }}" class="thumb" srcset="{{image #safe_srcset{w:'320,512,800'} }}" sizes="(max-width:768px) 100vw, 50vw">{{/image}}
+		</div>
+	</a>
 {{else}}
 <i>Nothing available.</i>
 {{/dynamic_list}}
-</dl>{{#paginated}}
+</section></div>
+{{#paginated}}
+<div class="container">
 	<ul class="pagination">
 		{{#first}}<li><a href="/{{uri}}">&laquo;</a></li>{{else}}<li class="disabled"><a href="#">&laquo;</a></li>{{/first}}
 		{{#prev}}<li><a href="/{{uri}}">&lsaquo;</a></li>{{else}}{{#paginate_nextprev}}<li class="disabled"><a href="#">&lsaquo;</a></li>{{/paginate_nextprev}}{{/prev}}
@@ -23,5 +37,6 @@
 		{{#next}}<li><a href="/{{uri}}">&rsaquo;</a></li>{{else}}{{#paginate_nextprev}}<li class="disabled"><a href="#">&rsaquo;</a></li>{{/paginate_nextprev}}{{/next}}
 		{{#last}}<li><a href="/{{uri}}">&raquo;</a></li>{{else}}<li class="disabled"><a href="#">&raquo;</a></li>{{/last}}
 	</ul>
+</div>
 {{/paginated}}
-{{> footer.inc.html}}
+{{> footerbase.inc.html}}
